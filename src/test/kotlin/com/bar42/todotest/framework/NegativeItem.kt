@@ -1,4 +1,4 @@
-package com.bar42.todotest.util
+package com.bar42.todotest.framework
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test

@@ -1,4 +1,4 @@
-package com.bar42.todotest.util
+package com.bar42.todotest.framework
 
 import io.restassured.RestAssured.*
 import io.restassured.http.ContentType
@@ -22,7 +22,7 @@ open class Requests {
     return ret
   }
 
-  public fun create(item: Item): ValidatableResponse {
+  fun create(item: Item): ValidatableResponse {
     val ret = given()
       .contentType(ContentType.JSON)
       .body(item)
@@ -31,7 +31,7 @@ open class Requests {
     return ret
   }
 
-  public fun create(body: String): ValidatableResponse {
+  fun create(body: String): ValidatableResponse {
     val ret = given()
       .contentType(ContentType.JSON)
       .body(body)
@@ -40,7 +40,7 @@ open class Requests {
     return ret
   }
 
-  public fun update(newItem: Item): ValidatableResponse {
+  fun update(newItem: Item): ValidatableResponse {
     val ret = given()
       .auth().preemptive().basic("admin", "admin")
       .contentType(ContentType.JSON)
@@ -51,7 +51,7 @@ open class Requests {
     return ret
   }
 
-  public fun update(body: String, id: ULong): ValidatableResponse {
+  fun update(body: String, id: ULong): ValidatableResponse {
     val ret = given()
       .contentType(ContentType.JSON)
       .body(body)
@@ -60,7 +60,7 @@ open class Requests {
     return ret
   }
 
-  public fun delete(id: ULong): ValidatableResponse {
+  fun delete(id: ULong): ValidatableResponse {
     val ret = given()
       .auth().preemptive().basic("admin", "admin")
       .delete("todos/$id")

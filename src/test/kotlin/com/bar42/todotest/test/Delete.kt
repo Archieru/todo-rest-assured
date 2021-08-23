@@ -1,13 +1,13 @@
 package com.bar42.todotest.test
 
-import com.bar42.todotest.util.BusinessLogic
-import com.bar42.todotest.util.Item
+import com.bar42.todotest.framework.BusinessLogic
+import com.bar42.todotest.framework.Item
 import io.restassured.RestAssured
 import org.junit.jupiter.api.Test
 
 class Delete: BusinessLogic() {
   @Test
-  public fun `can delete item`(){
+  fun `can delete item`(){
     val expected = Item(50, "Delete me", false)
     `should have item`(expected)
 
@@ -17,7 +17,7 @@ class Delete: BusinessLogic() {
   }
 
   @Test
-  public fun `can not delete non-existent item`(){
+  fun `can not delete non-existent item`(){
     val unexpected = Item(51, "Does not exist", false)
     `should not have item`(unexpected)
 
@@ -27,7 +27,7 @@ class Delete: BusinessLogic() {
   }
 
   @Test
-  public fun `can delete item with id 0`(){
+  fun `can delete item with id 0`(){
     val expected = Item(0, "Delete me", false)
     `should have item`(expected)
 
@@ -37,7 +37,7 @@ class Delete: BusinessLogic() {
   }
 
   @Test
-  public fun `can delete item with maximum id`(){
+  fun `can delete item with maximum id`(){
     val expected = Item(18446744073709551615UL, "Delete me", false)
     `should have item`(expected)
 
@@ -47,7 +47,7 @@ class Delete: BusinessLogic() {
   }
 
   @Test
-  public fun `not allowed to delete without authorization`(){
+  fun `not allowed to delete without authorization`(){
     val expected = Item(53, "Not enough rights", false)
     `should have item`(expected)
 
@@ -59,14 +59,14 @@ class Delete: BusinessLogic() {
   }
 
   @Test
-  public fun `can not delete negative id`(){
+  fun `can not delete negative id`(){
     RestAssured.given()
       .delete("todos/-1")
       .then().statusCode(INCORRECT_INPUT)
   }
 
   @Test
-  public fun `can not delete more than maximum id`(){
+  fun `can not delete more than maximum id`(){
     RestAssured.given()
       .delete("todos/18446744073709551616")
       .then().statusCode(INCORRECT_INPUT)

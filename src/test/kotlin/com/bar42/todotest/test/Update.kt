@@ -1,8 +1,8 @@
 package com.bar42.todotest.test
 
-import com.bar42.todotest.util.BusinessLogic
-import com.bar42.todotest.util.Item
-import com.bar42.todotest.util.NegativeItem
+import com.bar42.todotest.framework.BusinessLogic
+import com.bar42.todotest.framework.Item
+import com.bar42.todotest.framework.NegativeItem
 import io.restassured.RestAssured
 import org.junit.jupiter.api.Test
 

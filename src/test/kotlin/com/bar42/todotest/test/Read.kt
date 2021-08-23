@@ -1,7 +1,7 @@
 package com.bar42.todotest.test
 
-import com.bar42.todotest.util.BusinessLogic
-import com.bar42.todotest.util.Item
+import com.bar42.todotest.framework.BusinessLogic
+import com.bar42.todotest.framework.Item
 import io.restassured.RestAssured
 import io.restassured.RestAssured.given
 import org.junit.jupiter.api.Assertions.*
